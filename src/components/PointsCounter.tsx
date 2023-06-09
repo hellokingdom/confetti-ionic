@@ -2,7 +2,7 @@ import { animate } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
 const MIN_DURATION = 1
-const MAX_DURATION = 1.5
+const MAX_DURATION = 1
 
 
 function PointsCounter({
@@ -24,10 +24,6 @@ function PointsCounter({
     const node = nodeRef.current
     if (!node) return
     // If the previous value was higher we have lost points so we don't want to animate or celebrate.
-    if (from > to) {
-      node.textContent = to.toLocaleString();
-      return;
-    }
     if (!play) {
       return
     }

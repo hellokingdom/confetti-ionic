@@ -7,8 +7,10 @@ import {
 } from "@ionic/react";
 import PointsCounterHome from "../components/PointsCounterHome";
 import PointsProgress from "../components/PointsProgress";
+import { usePoints } from "../context/PointsContext";
 
 const App = () => {
+  const { state } = usePoints();
   return (
     <IonPage>
       <IonHeader>
@@ -24,7 +26,7 @@ const App = () => {
         </IonHeader>
         <PointsCounterHome />
         <PointsProgress />
-        
+        <pre><code>{JSON.stringify(state, null, 2)}</code></pre>
       </IonContent>
     </IonPage>
   );

@@ -73,7 +73,7 @@ const PointsCounterHome = () => {
           (state.context.currNumber || 0) - (state.context.prevNumber || 0)
         }
       />
-      <IonButton onClick={() => refetch()} size='small' expand="full">Re-fetch Points</IonButton>
+      <IonButton onClick={() => refetch()} size='small' expand="full">Re-fetch Random Points</IonButton>
     </>
   );
 };

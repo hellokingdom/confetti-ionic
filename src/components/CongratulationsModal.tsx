@@ -24,8 +24,12 @@ const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
       ref={modal}
     >
       <div className="block">
-        <p>Congratulations you have earned {points} points</p>
-        <IonButton onClick={onDismiss}>Dismiss</IonButton>
+        <div>
+          <p>Congratulations you have earned {points} points</p>
+          <IonButton onClick={onDismiss} expand="full">
+            Dimiss Modal
+          </IonButton>
+        </div>
       </div>
     </IonModal>
   );

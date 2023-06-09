@@ -35,8 +35,12 @@ const pointsMachine = createMachine<PointsMachineContext>({
       on: {
         '': [
           {
+            target: 'animation',
+            cond: (context) => context.prevNumber !== null && (context.currNumber || 0) < (context.prevNumber || 0),
+          },
+          {
             target: 'idle',
-            cond: (context) => context.prevNumber === null || (context.currNumber || 0) <= (context.prevNumber || 0),
+            cond: (context) => context.prevNumber === null,
           },
           {
             target: 'congrats',
@@ -64,3 +68,4 @@ const pointsMachine = createMachine<PointsMachineContext>({
 });
 
 export default pointsMachine;
+

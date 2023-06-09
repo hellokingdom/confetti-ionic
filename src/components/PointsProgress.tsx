@@ -35,7 +35,7 @@ function CircularProgress({
   useEffect(() => {
     if (!play) return;
     if (ref.current) {
-      animate(distanceMotionValue, data, { duration: 1.5 });
+      animate(distanceMotionValue, data, { duration: 1 });
     }
   }, [distanceMotionValue, data, play]);
 
@@ -80,7 +80,7 @@ function getPointsUntilNextFiver(value: number | null) {
 }
 
 function PointsProgress() {
-  const { state } = usePoints();
+  const { state, send } = usePoints();
   return (
     <>
       <div
@@ -96,13 +96,16 @@ function PointsProgress() {
           animateFrom={
             threshold - getPointsUntilNextFiver(state.context.prevNumber)
           }
-          play={state.matches("animation") || state.matches("idle")}
+          play={state.matches("animation")}
         />
       </div>
       <PointsCounter
         from={getPointsUntilNextFiver(state.context.prevNumber)}
         to={getPointsUntilNextFiver(state.context.currNumber)}
-        play={state.matches("animation") || state.matches("idle")}
+        play={state.matches("animation")}
+        onAnimationComplete={() => {
+          send("ANIMATION_COMPLETE");
+        }}
       />{" "}
       points<br></br>until next Fiver
     </>
